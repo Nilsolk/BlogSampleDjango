@@ -15,5 +15,5 @@
     </p>
     {{ post.body|truncatewords:30|linebreaks }}
   {% endfor %}
-  {% include "C:\DjangoProjects\my_site\blog\templates\blog\pagination.html" with page=posts %}
+  {% include "blog/pagination.html" with page=page_obj %}
 {% endblock %}

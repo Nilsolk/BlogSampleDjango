@@ -1,0 +1,6 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<h2>Спасибо за ваше сообщение!</h2>
+<p>Мы скоро с вами свяжемся.</p>
+<a href = {% url "blog:post_list" %}> Back to posts</a>
+{% endblock %}

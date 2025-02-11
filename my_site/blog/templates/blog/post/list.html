@@ -1,19 +1,24 @@
 {% extends "blog/base.html" %}
 
-{% block title %}My Blog{% endblock %}
+{% block title %}Мой Блог{% endblock %}
 
 {% block content %}
-  <h1>My Blog</h1>
+  <h1>Мой Блог</h1>
+  <div>
+    <a href="{% url 'blog:new_post_list' %}?sort=asc">Старые посты</a> |
+    <a href="{% url 'blog:new_post_list' %}?sort=desc">Новые посты</a> |
+    <a href="{% url 'blog:new_post_list' %}?recent=1">Последние</a> |
+  </div>
+
   {% for post in posts %}
     <h2>
-      <a href="{{ post.get_absolute_url }}">
-        {{ post.title }}
-      </a>
+      <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
     </h2>
     <p class="date">
-      Published {{ post.publish }} by {{ post.author }}
+      Опубликовано {{ post.publish }} автором {{ post.author }}
     </p>
-    {{ post.body|truncatewords:30|linebreaks }}
+    <p>{{ post.body|truncatewords:30|linebreaks }}</p>
   {% endfor %}
-  {% include "blog/pagination.html" with page=page_obj %}
+
+  {% include "blog/pagination.html" with page=posts %}
 {% endblock %}

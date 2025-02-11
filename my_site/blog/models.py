@@ -58,3 +58,11 @@ class Comment(models.Model):
         def __str__(self):
             return f'Comment created by {self.name} at {self.created} on {self.post}'
              
+class FeedBack(models.Model):
+     name = models.CharField(max_length=20)
+     email = models.EmailField()
+     message = models.CharField(max_length=300)
+
+     def __str__(self):
+         return f'Message from {self.name}'
+     
